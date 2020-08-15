@@ -12,23 +12,32 @@
 
 using namespace std;
 
-//ユークリッドの互除法
-//p,qの最大公約数を返す
-int gcd(int p, int q) {
-	if (p % q == 0) return q;
-	return gcd(q, p % q);
-}
-
-//最小公倍数を返す
-long long lcm(long long a, long long b) {
-	return a * b / gcd(a, b);
-}
-
 int main() {
-	long long a, b;
-	cin >> a >> b;
+	long long n;
+	cin >> n;
 
-	cout << lcm(a, b) << endl;
+	vector<int> a(n);
+	for (int i = 0;i < n;i++) {
+		cin >> a[i];
+	}
+
+	int cnt = 1;
+	int ans = 0;
+	for (int i = 0;i < n;i++) {
+		if (a[i] == cnt) {
+			cnt++;
+		}
+		else {
+			ans++;
+		}
+	}
+
+	if (cnt == 1) {
+		cout << -1 << endl;
+	}
+	else {
+		cout << ans << endl;
+	}
 
 	return 0;
 }
